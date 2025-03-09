@@ -5,7 +5,7 @@ import {Script, console} from "forge-std/Script.sol";
 import {H3rmes} from "../src/H3rmes.sol";
 import {H3rmesContractDeployer} from "../src/H3rmesContractDeployer.sol";
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import {H3rmesHelperV1} from "../src/H3rmesHelperV1.sol";
+import {H3rmesHelper} from "../src/H3rmesHelper.sol";
 
 /**
  * @title Deploy H3rmes Script
@@ -115,9 +115,9 @@ contract DeployH3rmesScript is Script {
 
         // Deploy Helper
         bytes memory h3rmesHelperBytecode =
-            abi.encodePacked(type(H3rmesHelperV1).creationCode, abi.encode(h3rmesAddress));
-        address h3rmesHelperAddress = h3rmesDeployer.deploy(h3rmesHelperBytecode, "H3rmesHelperV1", version);
-        console.log("H3rmesHelperV1 deployed at:", h3rmesHelperAddress);
+            abi.encodePacked(type(H3rmesHelper).creationCode, abi.encode(h3rmesAddress));
+        address h3rmesHelperAddress = h3rmesDeployer.deploy(h3rmesHelperBytecode, "H3rmesHelper", version);
+        console.log("H3rmesHelper deployed at:", h3rmesHelperAddress);
 
         // Log deployed contract info
         console.log("\n=== Deployment Summary ===");
